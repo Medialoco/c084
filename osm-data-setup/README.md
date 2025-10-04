@@ -11,35 +11,27 @@ curl -O https://download.geofabrik.de/europe/france/provence-alpes-cote-d-azur-l
 
 Older snapshots (2016, 2018, etc.) are available in the Geofabrik archive at the same URL.
 
-## 2. Downloading the 084 boundary (GeoJSON)
+## 2. Downloading the `084` boundary (GeoJSON)
 
 We also need the administrative boundary of the 084 to clip or filter OSM data.
 
 Then, run the following in your terminal (inside the project directory):
 
 ```bash
-curl -G 'https://overpass-api.de/api/interpreter'   --data-urlencode 'data=[out:json];rel["boundary"="administrative"]["admin_level"="6"]["name"="Vaucluse"];out geom;' | jq -r '
-  {"type":"FeatureCollection",
-   "features":[.elements[]
-     | select(.type=="relation")
-     | {"type":"Feature","properties":{"id":.id},
-        "geometry":{"type":"Polygon",
-          "coordinates":[[.members[]
-            | select(.role=="outer" and .type=="way")
-            | .geometry[]
-            | [.lon,.lat] ]]}}
-       }]}'
-> vaucluse.geojson
+curl -sG 'https://overpass-api.de/api/interpreter' \
+  --data-urlencode 'data=[out:json][timeout:60];
+rel["boundary"="administrative"]["admin_level"="6"]["name"="Vaucluse"];
+out body; >; out skel qt;' \
+| npx osmtogeojson --format=geojson --no-precision-reduction \
+> c084.geojson
 ```
 
-### Create the `.pbf` for 084
+### Create the `.pbf` for `084`
 
 Install `osmium-tool` and run this command:
 ```bash
-osmium extract   --polygon=data/vaucluse.geojson   --output=data/vaucluse-latest.osm.pbf   --overwrite   paca-250917.pbf
+osmium extract   --polygon=c084.geojson   --output=c084.osm.pbf --overwrite   paca-250917.pbf 
 ```
 
-This command creates a new `.pbf` file containing only the 084 data.
-
-This will create a **`vaucluse.geojson`** file containing the administrative boundary of the department.
+This command creates a new `.pbf` file containing only the `084` data.
 
