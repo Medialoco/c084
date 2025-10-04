@@ -1,4 +1,4 @@
 # c084
 
-- Create the relevant input file: [OSM Data Setup](osm-data-setup/README.md)
-- Data analysis: [data-analysis-notebooks](data-analysis-notebooks)
+- Create the relevant input file: [setup](osm-data-setup/README.md)
+- Data analysis: [notebooks](data-analysis-notebooks)
