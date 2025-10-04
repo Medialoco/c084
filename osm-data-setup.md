@@ -34,4 +34,13 @@ curl -G 'https://overpass-api.de/api/interpreter'   --data-urlencode 'data=[out:
 > vaucluse.geojson
 ```
 
+### Create the `.pbf` for Vaucluse
+
+Install `osmium-tool` and run this command:
+```bash
+osmium extract   --polygon=data/vaucluse.geojson   --output=data/vaucluse-latest.osm.pbf   --overwrite   paca-250917.pbf
+```
+
+This command creates a new `.pbf` file containing only the **Vaucluse** data.
+
 This will create a **`vaucluse.geojson`** file containing the administrative boundary of the department.
