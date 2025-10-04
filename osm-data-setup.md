@@ -13,7 +13,7 @@ curl -O https://download.geofabrik.de/europe/france/provence-alpes-cote-d-azur-l
 
 Older snapshots (2016, 2018, etc.) are available in the Geofabrik archive at the same URL.
 
-# 2. Downloading the Vaucluse boundary (GeoJSON)
+## 2. Downloading the Vaucluse boundary (GeoJSON)
 
 We also need the administrative boundary of the Vaucluse to clip or filter OSM data.
 
