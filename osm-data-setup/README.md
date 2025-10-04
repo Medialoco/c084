@@ -26,7 +26,7 @@ out body; >; out skel qt;' \
 > c084.geojson
 ```
 
-### Create the `.pbf` for `084`
+## 3. Create the `.pbf` for `084`
 
 Install `osmium-tool` and run this command:
 ```bash
