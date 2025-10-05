@@ -4,5 +4,5 @@
 - Create the relevant input file: [setup](osm-data-setup/README.md)
 - Data analysis: [notebooks](data-analysis-notebooks)
 
-## First result
-![...](data-analysis-notebooks/084_urban_agri_forest.png)
+## Result
+![...](data-analysis-notebooks/084_layers_full.png)
